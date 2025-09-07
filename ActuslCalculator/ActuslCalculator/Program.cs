@@ -30,29 +30,31 @@ class Program
             return;
         }
 
-        if (Operator == "+")
+        switch (Operator)
         {
-            result = num1 + num2;
-        }
-        else if (Operator == "-")
-        {
-            result = num1 - num2;
-        }
-        else if (Operator == "*")
-        {
-            result = num1 * num2;
-        }
-        else if (Operator == "/")
-        {
-            result = num1 / num2;
-        }
-        else
-        {
-            Console.WriteLine("Invalid operator!");
-            return;
+            case "+":
+                result = num1 + num2;
+                break;
+            case "-":
+                result = num1 - num2;
+                break;
+            case "*":
+                result = num1 * num2;
+                break;
+            case "/":
+                if(num2 == 0)
+                {
+                    Console.WriteLine("Cannot divide by zero!");
+                    return;
+                }
+                result = num1 / num2;
+                break;
+            default:
+                Console.WriteLine("Invalid operator!");
+                return;
         }
 
-            Console.Write($"The result of {num1} {Operator} {num2} is: {result}");
+            Console.WriteLine($"The result of {num1} {Operator} {num2} is: {result}");
         Console.WriteLine("Finished calculator!");
     }
 }
