@@ -82,6 +82,53 @@ class Program
                     Console.WriteLine($"{Kilo} in Pounds is: {result}!");
                     break;
                 }
+            case ("PtKg"):
+                {
+                    Console.Write("How many Pound/s: ");
+
+                    string stringPounds = Console.ReadLine();
+                    if(!float.TryParse(stringPounds, out float Pounds))
+                    {
+                        Console.WriteLine("Invalid input!");
+                        return;
+                    }
+                    result = Pounds / 2.20462f;
+                    Console.WriteLine($"{Pounds} in Pounds is: {result}!");
+                    break;
+                }
+            case ("CtF"):
+                {
+                    Console.Write("How many Celsius/s: ");
+
+                    string stringCelsius = Console.ReadLine();
+                    if(!float.TryParse(stringCelsius, out float Celsius))
+                    {
+                        Console.WriteLine("Invalid input!");
+                        return;
+                    }
+                    result = (Celsius * 9f / 5f) + 32f;
+                    Console.WriteLine($"{Celsius} in Fahrenheit is: {result}!");
+                    break;
+                }
+            case ("FtC"):
+                {
+                    Console.Write("How many Fahrenheit: ");
+
+                    string stringFahrenheit = Console.ReadLine();
+                    if(!float.TryParse(stringFahrenheit, out float Fahrenheit))
+                    {
+                        Console.WriteLine("Invalid input!");
+                        return;
+                    }
+                    result = (Fahrenheit - 32f) * 5 / 9;
+                    Console.WriteLine($"{Fahrenheit} in Celsius is: {result}!");
+                    break;
+                }
+            default:
+                {
+                    Console.WriteLine("Invalid converter,goodbye");
+                    return;
+                }
             
         }
     }
