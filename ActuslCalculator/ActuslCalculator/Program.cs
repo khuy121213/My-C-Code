@@ -46,8 +46,13 @@ class Program
         {
             result = num1 / num2;
         }
+        else
+        {
+            Console.WriteLine("Invalid operator!");
+            return;
+        }
 
-        Console.Write($"The result of {num1} {Operator} {num2} is: {result}");
+            Console.Write($"The result of {num1} {Operator} {num2} is: {result}");
         Console.WriteLine("Finished calculator!");
     }
 }
