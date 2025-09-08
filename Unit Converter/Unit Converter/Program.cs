@@ -53,7 +53,19 @@ class Program
                         }
                         result = Miles / 0.621371f;
                         Console.WriteLine($"{Miles} in Kilometers is: {result}!");
-                        break;
+                        
+                        Console.WriteLine("Type any key to restart or q to quit");
+                        
+                        char retry = Console.ReadKey().KeyChar;
+                        if (retry == 'q')
+                        {
+                            Retry = false;
+                            break;
+                        }
+                        else
+                        {
+                            continue;
+                        }
                     }
                 case ("MttF"):
                     {
@@ -67,7 +79,19 @@ class Program
                         }
                         result = Meter * 3.28084f;
                         Console.WriteLine($"{Meter} in Feet is: {result}!");
-                        break;
+
+                        Console.WriteLine("Type any key to restart or q to quit");
+                        
+                        char retry = Console.ReadKey().KeyChar;
+                        if (retry == 'q')
+                        {
+                            Retry = false;
+                            break;
+                        }
+                        else
+                        {
+                            continue;
+                        }
                     }
                 case ("FtMt"):
                     {
@@ -81,7 +105,19 @@ class Program
                         }
                         result = Feet / 3.28084f;
                         Console.WriteLine($"{Feet} in Meters is: {result}!");
-                        break;
+
+                        Console.WriteLine("Type any key to restart or q to quit");
+
+                        char retry = Console.ReadKey().KeyChar;
+                        if (retry == 'q')
+                        {
+                            Retry = false;
+                            break;
+                        }
+                        else
+                        {
+                            continue;
+                        }
                     }
                 case ("KgtP"):
                     {
@@ -95,7 +131,19 @@ class Program
                         }
                         result = Kilo * 2.20462f;
                         Console.WriteLine($"{Kilo} in Pounds is: {result}!");
-                        break;
+
+                        Console.WriteLine("Type any key to restart or q to quit");
+
+                        char retry = Console.ReadKey().KeyChar;
+                        if (retry == 'q')
+                        {
+                            Retry = false;
+                            break;
+                        }
+                        else
+                        {
+                            continue;
+                        }
                     }
                 case ("PtKg"):
                     {
@@ -109,7 +157,19 @@ class Program
                         }
                         result = Pounds / 2.20462f;
                         Console.WriteLine($"{Pounds} in Pounds is: {result}!");
-                        break;
+
+                        Console.WriteLine("Type any key to restart or q to quit");
+
+                        char retry = Console.ReadKey().KeyChar;
+                        if (retry == 'q')
+                        {
+                            Retry = false;
+                            break;
+                        }
+                        else
+                        {
+                            continue;
+                        }
                     }
                 case ("CtF"):
                     {
@@ -123,7 +183,19 @@ class Program
                         }
                         result = (Celsius * 9f / 5f) + 32f;
                         Console.WriteLine($"{Celsius} in Fahrenheit is: {result}!");
-                        break;
+
+                        Console.WriteLine("Type any key to restart or q to quit");
+
+                        char retry = Console.ReadKey().KeyChar;
+                        if (retry == 'q')
+                        {
+                            Retry = false;
+                            break;
+                        }
+                        else
+                        {
+                            continue;
+                        }
                     }
                 case ("FtC"):
                     {
@@ -137,12 +209,36 @@ class Program
                         }
                         result = (Fahrenheit - 32f) * 5 / 9;
                         Console.WriteLine($"{Fahrenheit} in Celsius is: {result}!");
-                        break;
+
+                        Console.WriteLine("Type any key to restart or q to quit");
+
+                        char retry = Console.ReadKey().KeyChar;
+                        if (retry == 'q')
+                        {
+                            Retry = false;
+                            break;
+                        }
+                        else
+                        {
+                            continue;
+                        }
                     }
                 default:
                     {
                         Console.WriteLine("Invalid converter,goodbye");
-                        return;
+
+                        Console.WriteLine("Type any key to restart or q to quit");
+
+                        char retry = Console.ReadKey().KeyChar;
+                        if (retry == 'q')
+                        {
+                            Retry = false;
+                            break;
+                        }
+                        else
+                        {
+                            continue;
+                        }
                     }
 
             }
