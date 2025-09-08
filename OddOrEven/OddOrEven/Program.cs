@@ -3,9 +3,8 @@
 class Program
 {
     static void Main()
-    {
-        bool Restart = true;
-        while (Restart)
+    {   
+        while (true)
         {
             Console.Write("\nPick a number: ");
             string numString = Console.ReadLine();
