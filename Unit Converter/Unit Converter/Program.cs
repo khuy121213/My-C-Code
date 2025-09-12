@@ -11,7 +11,7 @@ class Program
             while (Retry)
             {
 
-            Console.WriteLine("Choose what do you wanna convert (KtM,MtK,MttF,FtMt,KgtP,PtKg,CtF,FtC): \nKilometers to Miles\nMiles to Kilometers\nMeters to Feet\nFeet to Meters\nWeight/Mass\nKilograms to Pounds\nPounds to Kilograms\nTemperature\nCelsius to Fahrenheit\nFahrenheit to Celsius\n----------------------------------");
+            Console.WriteLine("Choose what do you wanna convert (KtM,MtK,MttF,FtMt,KgtP,PtKg,CtF,FtC): \nKilometers to Miles\nMiles to Kilometers\nMeters to Feet\nFeet to Meters\n----------------------\nWeight/Mass\nKilograms to Pounds\nPounds to Kilograms\n--------------------\nTemperature\nCelsius to Fahrenheit\nFahrenheit to Celsius\n----------------------------------");
             string convert = Console.ReadLine();
 
             switch (convert)
