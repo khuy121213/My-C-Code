@@ -1,9 +1,12 @@
-﻿while (true)
+﻿using System;
+
+while (true)
 {
     Console.Write("Whats your name: ");
-    string name = Console.ReadLine();
+    string? name = Console.ReadLine();
 
-    if (name == "bill" || name == "BILL" || name == "Bill")
+    // Check for Bill
+    if (name != null && name.Equals("bill", StringComparison.OrdinalIgnoreCase))
     {
         Console.WriteLine("DID U JUST SAY 67????");
         for (int i = 0; i < 10; i++)
@@ -18,11 +21,13 @@
     }
     else
     {
+        // Normal greeting
         Console.WriteLine($"Hello {name}!");
     }
+
     Console.WriteLine();
-    Console.Write("Enter a key to restart: ");
+    Console.Write("Press any key to restart: ");
     Console.ReadKey(true);
     Console.Clear();
-    continue;
+    Console.WriteLine("HelloWorld(\"print\")");
 }
