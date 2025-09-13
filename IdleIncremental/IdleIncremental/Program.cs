@@ -100,7 +100,7 @@ public class Upgrades
         {
             state.Coins -= cpsCost;
             state.CoinsPS += 1;
-            state.CoinsPS += cpsCost * 10 / 100;
+            cpsCost += cpsCost * 10 / 100;
             Console.WriteLine();
             return $"You upgraded!Your new CPS is {state.CoinsPS} per sec";
         }
