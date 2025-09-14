@@ -1,0 +1,107 @@
+GameState:
+    Coins = 0
+    CoinsPS = 1
+    currentCd = 1000
+    MP = 0
+    MPUpgradePurchased = false
+
+MainLoop:
+    speedCost = 10
+    cpsCost = 20
+    lastMessage = ""
+    messageTime = 0
+    lastCointick = current time
+
+    Display "Press E to upgrade speed, F to upgrade CPS, P to buy MP, M for MP upgrades"
+
+    Loop Forever:
+        // --- DISPLAY ---
+        Line 1: Coins
+        Line 2: Last message (if messageTime < 1 sec)
+        Line 3: Prices: speedCost, cpsCost
+        Line 4: Stats: currentCd, CoinsPS
+        Line 5: MP count
+        Line 6: MP Upgrade status (if purchased)
+
+        // --- INPUT ---
+        IF key pressed:
+            key = lowercase of key
+
+            IF key == 'e':
+                CALL UpgradeSpeed(state, ref speedCost)
+                lastMessage = returned message
+                messageTime = current time
+
+            ELSE IF key == 'f':
+                CALL UpgradeCPS(state, ref cpsCost)
+                lastMessage = returned message
+                messageTime = current time
+
+            ELSE IF key == 'p':  // Buy MP / Prestige
+                IF Coins >= 1000:
+                    Coins -= 1000
+                    MP += 1
+                    lastMessage = "You bought 1 MP! Prestige activated!"
+                    messageTime = current time
+                    // RESET EVERYTHING except MP and MPUpgradePurchased
+                    Coins = 0
+                    CoinsPS = 1
+                    currentCd = 1000
+                    speedCost = 10
+                    cpsCost = 20
+                    IF MPUpgradePurchased:
+                        CoinsPS += 1
+
+            ELSE IF key == 'm':  // MP upgrade menu
+                IF MP >= 1 AND NOT MPUpgradePurchased:
+                    MP -= 1
+                    MPUpgradePurchased = true
+                    CoinsPS += 1    // permanent CPS bonus
+                    lastMessage = "MP Upgrade purchased! +1 CPS permanently"
+                    messageTime = current time
+
+            WHILE key pressed:
+                discard key
+
+        // --- COIN GENERATION ---
+        IF current time - lastCointick >= currentCd:
+            Coins += CoinsPS
+            lastCointick = current time
+
+        // --- DISPLAY LAST MESSAGE ---
+        IF current time - messageTime < 1 sec:
+            Display lastMessage
+        ELSE:
+            Clear line for message
+
+        Sleep 10ms
+
+        // --- WIN CONDITION ---
+        IF Coins >= 1_000_000_000:
+            Display "YOU WON THE GAME!"
+            Display "Press R to restart or any other key to exit"
+            Wait for key
+            IF key == 'r':
+                Reset GameState
+                Reset speedCost, cpsCost
+                Continue loop
+            ELSE:
+                Break loop
+
+UpgradeSpeed(state, ref speedCost):
+    IF Coins >= speedCost:
+        Coins -= speedCost
+        currentCd = max(100, currentCd - 20)
+        speedCost += speedCost * 15 / 100
+        Return "You upgraded! New cooldown: currentCd ms"
+    ELSE:
+        Return "Not enough coins!"
+
+UpgradeCPS(state, ref cpsCost):
+    IF Coins >= cpsCost:
+        Coins -= cpsCost
+        CoinsPS += 1
+        cpsCost += cpsCost * 20 / 100
+        Return "You upgraded! New CPS: CoinsPS per sec"
+    ELSE:
+        Return "Not enough coins!"
