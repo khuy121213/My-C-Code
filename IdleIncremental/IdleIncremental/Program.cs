@@ -60,7 +60,7 @@ public class MainGame
                 Console.Write(lastMessage);
             }
             Thread.Sleep(10);
-            if (state.Coins == 1000)
+            if (state.Coins >= 1000)
             {
                 break;
             }
@@ -83,7 +83,7 @@ public class Upgrades
         {
             state.Coins -= speedCost;
             state.currentCd = Math.Max(100, state.currentCd - 20);
-            speedCost += speedCost * 10 / 100;
+            speedCost += speedCost * 15 / 100;
             Console.WriteLine();
             return $"You upgraded!Your new cooldown is {state.currentCd} ms";
 
@@ -100,7 +100,7 @@ public class Upgrades
         {
             state.Coins -= cpsCost;
             state.CoinsPS += 1;
-            cpsCost += cpsCost * 10 / 100;
+            cpsCost += cpsCost * 20 / 100;
             Console.WriteLine();
             return $"You upgraded!Your new CPS is {state.CoinsPS} per sec";
         }
